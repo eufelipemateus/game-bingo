@@ -1,0 +1,409 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Bingo</title>
+<style>
+body{
+	background:#000;
+	color:#FFF;
+	font-size: 20px;
+	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+	width:1349px;
+}
+
+h1, th {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1 {
+	font-size: 28px;
+}
+table {
+	border-collapse: collapse;
+}
+
+
+#roleta{
+	height:176px;
+	position:relative;
+	margin-bottom:1%;
+	margin:0;
+	padding:0;
+	
+}
+#roleta div{
+	height:40px;
+	font-size:20px;
+	display:inline-block;
+	width:40px;
+	border:2px solid #000;
+	text-align:center;
+	padding:0;
+}
+#roleta div.apontado{
+	border:2px solid #BF0;
+	background:#FFF;
+	color:#000;
+}
+#roleta div.sorteado{
+	border:2px solid #FB0;
+}
+#cartela{
+	background:#FFF;
+	color:#000;
+	position:relative;
+	margin:0 auto;
+	width:377px;
+}
+#cartela table{
+	color:#000;
+}
+
+#cartela table th, #cartela table td {
+	padding: 10px;
+	border: 2px #666 solid;
+	text-align: center;
+	font-size: 24px;
+}
+#cartela table td{
+	cursor:pointer;
+}
+#free {
+	background-color: #F66;
+	cursor:default;
+}
+.selectedSquare{
+	background:#999;
+	cursor:default;
+}
+#btn-bingo{
+	width:80px;
+	height:80px;
+	background:#0D0;
+	font-weight:bold;
+	border-color:#999;
+	cursor:pointer;
+	border-radius:50%;
+	font-size:17px;
+}
+#informacoes{
+	float:left;
+}
+#buttons{
+	float:right;
+	text-align:center;
+	width:20%;
+}
+#box{
+	position:absolute;
+	width:100%;
+	height:100%;	
+	background:rgba(200,200,200,0.6);
+	margin:0;
+	padding:0;
+	z-index:1;
+	overflow:hidden;
+	text-align:center;
+}
+
+#box  div{
+	margin-top:20%;
+	font-size:72px;
+	font-weight:bold;
+	text-shadow:5px 5px  #000;
+	box-shadow:0px 5px 5px 5px  #000;
+	display:inline-block;
+	background:rgba(240,240,240,0.8);
+	
+}
+#box #YL{
+	display:none;
+	color:#F00;
+}
+#box #YW{
+	display:none;
+	color:#0D0;
+}
+#box #WG{
+	color:#000;
+	text-shadow:5px 5px #FFF;
+}
+</style>
+
+</head>
+<body>
+	<div id="box">
+		<div id="YL">You Lost!</div>
+		<div id="YW">You Win! </div>
+		<div id="WG">Wait for new Game... </div>
+	</div>
+	<div id="roleta"></div>
+	<div id="informacoes">
+		<table>
+			<tr>
+				<td align="right" width="50%">Jogadores:</td>
+				<td align="center" width="50%"  id="jogadores" title="Quantidades de jogadores Online.">Carregando...</td>
+			</tr>
+			
+			<tr>
+				<td align="right">Possiveis Ganhadores:</td>
+				<td align="center" id="pGanhadores"  title="Jogadores que matematicamente já ganharam.">Carregando...</td>
+			</tr>
+		</table>
+	</div>	
+	<div id="buttons">
+		<div>
+			<button id="btn-bingo" onclick="sendBingo()">Bingo</button>
+		</div>
+	</div>
+	<div id="cartela" >
+		<table>
+			<tr>
+				<th width="20%">B</th>
+				<th width="20%">I</th>
+				<th width="20%">N</th>
+				<th width="20%">G</th>
+				<th width="20%">O</th>
+			</tr>
+			<tr>
+				<td data-square="0">&nbsp;</td>
+				<td data-square="1">&nbsp;</td>
+				<td data-square="2">&nbsp;</td>
+				<td data-square="3">&nbsp;</td>
+				<td data-square="4">&nbsp;</td>
+			</tr>
+			<tr>
+				<td data-square="5">&nbsp;</td>
+				<td data-square="6">&nbsp;</td>
+				<td data-square="7">&nbsp;</td>
+				<td data-square="8">&nbsp;</td>
+				<td data-square="9">&nbsp;</td>
+			</tr>
+			<tr>
+				<td data-square="10">&nbsp;</td>
+				<td data-square="11">&nbsp;</td>
+				<td id="free">Free</td>
+				<td data-square="12">&nbsp;</td>
+				<td data-square="13">&nbsp;</td>
+			</tr>
+			<tr>
+				<td data-square="14">&nbsp;</td>
+				<td data-square="15">&nbsp;</td>
+				<td data-square="16">&nbsp;</td>
+				<td data-square="17">&nbsp;</td>
+				<td data-square="18">&nbsp;</td>
+			</tr>
+			<tr>
+				<td data-square="19">&nbsp;</td>
+				<td data-square="20">&nbsp;</td>
+				<td data-square="21">&nbsp;</td>
+				<td data-square="22">&nbsp;</td>
+				<td data-square="23">&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script>
+/**** WebSocket ***/	
+	
+
+
+
+</script>
+<script>
+/***Roleta ***/
+
+var MaxPoints = 120;
+var ValueSorteado = 0;
+
+
+var IntervalValue = 1;
+var IntervalBPoints;
+var TimeInterval = 80;
+var NumerosSorteados = [];
+
+
+
+function createPoint(value){
+	var elemento = document.createElement("div");
+	elemento.setAttribute("data-value",value);
+	elemento.innerHTML = value;
+	document.getElementById("roleta").appendChild(elemento);
+}	
+
+
+function InitRoleta(){
+	for(i=1;i<=MaxPoints;i++){
+		createPoint(i);
+	}
+}
+
+function GirarRoleta(){
+	IntervalBPoints = setInterval(function(){
+		
+		
+		document.querySelector('div[data-value="'+IntervalValue+'"]').classList.remove("apontado");
+		
+		IntervalValue++;
+		IntervalValue = (IntervalValue>MaxPoints)? 1 : IntervalValue; 
+		if(ValueSorteado== IntervalValue){
+			document.querySelector('div[data-value="'+ValueSorteado+'"]').classList.add("sorteado");
+			playSorteado();
+			ValueSorteado=0;
+		}
+		document.querySelector('div[data-value="'+IntervalValue+'"]').classList.add("apontado");
+		
+	},TimeInterval)
+
+}
+function SortearNumero(num){
+	NumerosSorteados.push(num);
+	ValueSorteado=num;
+}
+</script>
+<script>
+/*** Card     ***/
+var usedNums = new Array(121);
+var selectedSquares  = new Array();
+var cardNums = 24;
+
+function newCard() {
+	var  numeros ="";
+	var p=1;
+	
+	for(var i=0 ; i<cardNums; i++){
+		setSquare(i);
+   	}
+	
+	
+}
+
+function setSquare(thisSquare){
+	var currentSquare = document.querySelector('td[data-square="'+thisSquare+'"]');
+  	var colPlace = new Array(0,1,2,3,4,0,1,2,3,4,0,1,3,4,0,1,2,3,4,0,1,2,3,4);
+  	var colBasis = colPlace[thisSquare] * cardNums ;
+  	var newNum = colBasis + getNewNum() + 1;
+	
+	do{
+    		newNum = colBasis + getNewNum() + 1;
+  	}while(usedNums[newNum]);
+  
+  	usedNums[newNum] = true;
+  	currentSquare.innerHTML = newNum;
+  	currentSquare.addEventListener('click',selectSquare,false);
+	currentSquare.setAttribute("data-value",newNum);
+	
+	
+}
+
+function selectSquare(event){
+	var e =	event.target;
+	var comb = 0;	
+	
+	selectedSquares.push(e.getAttribute("data-value"));
+	e.classList.add("selectedSquare");
+	ws.send("S-"+e.getAttribute("data-value"));
+}
+
+function getNewNum() {
+  return Math.floor(Math.random() * cardNums );
+}
+
+function anotherCard() {
+  for (var i = 1; i < usedNums.length; i++) {
+    usedNums[i] = false;
+  };
+
+  newCard();
+  return false;
+}
+
+function sendBingo(){
+	ws.send("B");
+}
+</script>
+<script>
+/**** Audio ****/
+var Audio;
+
+function initAudio(){
+	Audio = document.createElement("audio");
+	document.body.appendChild(Audio);
+}
+function playSorteado(){
+	Audio.src = "audio/win.mp3";
+	Audio.play();
+}
+
+</script>
+<script>
+/*** Iniciar Sistema  ***/
+var ws;
+function initAll() {	 
+ if (document.getElementById) {
+	initAudio();
+	InitRoleta();
+
+	ws =new WebSocket(`ws://${location.host}`);
+	ws.onopen = function(event){
+		ws.send("NC-NC");
+	}
+	ws.onmessage = function(event){
+		var data = event.data.split("-");
+
+		switch(data[0]){
+			case "N" :
+				SortearNumero(data[1]);	
+			break;
+			case "I" :
+				var info = data[1].split(",");
+				document.querySelector("#jogadores").innerHTML = info[0];
+				document.querySelector("#pGanhadores").innerHTML = info[1];
+			break;
+			case "NG" : 
+				newCard();
+				
+				var numeros = "";
+				var p =1;
+				for(var i=1;i<=usedNums.length;i++){
+					if(usedNums[i]){
+						if(p<cardNums){
+							numeros += i+",";
+						}else{
+							numeros += i;
+						}
+						p++;		
+					}
+				}
+				ws.send("C-"+numeros);
+				GirarRoleta();
+				document.querySelector("#box #WG").style.display='none';
+				document.querySelector("#box").style.display='none';
+			break;
+			case "YL" :		
+				document.querySelector("#box #YL").style.display='block';
+				document.querySelector("#box").style.display='block';
+			break;
+			case "YW" :		
+				document.querySelector("#box #YW").style.display='block';
+				document.querySelector("#box").style.display='block';
+			break;
+		}
+
+	}
+	ws.onclose = function(){
+		console.log("Foi Fechado!! ");
+	}
+	
+  }
+  else{
+    alert("Your browser does not support this script.");
+  }
+}
+</script>
+<script>
+initAll();
+</script>
+
+</html>

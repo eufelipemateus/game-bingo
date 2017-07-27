@@ -1,8 +1,8 @@
 # Bingo
 
-Bingo é jogo multplayer no qual vence quem tive mais numeros sorteados
+Bingo é jogo multiplayer no qual vence quem tive mais números sorteados.
 
-##Installing
+## Installing
 
 Para instalar  copia o prejeto para o seu pc
 
@@ -24,5 +24,5 @@ npm start
 
 ## Author
 
-* **Felipe Mateus** - - [PurpleBooth](https://github.com/felipefm32)
+* **Felipe Mateus** - - [Felipefm32](https://github.com/felipefm32)
 
