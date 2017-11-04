@@ -1,5 +1,5 @@
 {
-  "name": "bingo",
+  "name": "node-bingo-game",
   "version": "1.0.0",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "server.js",

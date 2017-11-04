@@ -1,6 +1,6 @@
-# Bingo
+# NodeBingo
 
-Bingo é jogo multiplayer no qual vence quem tive mais números sorteados.
+NodeBingo é jogo multiplayer no qual vence quem tive mais números sorteados.
 
 ## Installing
 
@@ -24,5 +24,5 @@ npm start
 
 ## Author
 
-* **Felipe Mateus** - - [Felipefm32](https://github.com/felipefm32)
+* **[Felipe Mateus](https://felipefm32.com)** - [Felipefm32](https://github.com/felipefm32)
 

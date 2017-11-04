@@ -21,9 +21,8 @@ let cardNums = 24;
 
 wss.on('connection', function connection(ws, req) {
   const location = url.parse(req.url, true);
-  // You might use location.query.access_token to authenticate or share sessions
-  // or req.headers.cookie (see http://stackoverflow.com/a/16395220/151312)
 
+  
   ws.on('message', function incoming(message) {
 	  var data = message.split("-");
 	  
@@ -54,28 +53,29 @@ wss.on('connection', function connection(ws, req) {
 							if(n==index){
 								NumerosChekededs++;
 							}else{
+								/*User lost*/
 								ws.send("YL-YL");
 								//console.log("Trapaça Numero não sorteado");
 							}
 						});
 						console.log("NuChe:"+NumerosChekededs);
 					}else{
+						/*User lost*/
 						ws.send("YL-YL");
 						//console.log("Trapaça Numero não sorteado");
 					}
 				});
 				if(NumerosChekededs>=cardNums){ 
+					//*User win Game*/
 					ws.send("YW-YW") 
 					wss.broadcastEveryoneElse("YL-YL");
 				}
 			}else{
+				/*User lost*/
 				ws.send("YL-YL")  ;
 				//console.log("A Cartela não foi toda preenchida");
 			}
-			
-		
 		break;
-		
 	  }
   });
 
@@ -84,7 +84,7 @@ wss.on('connection', function connection(ws, req) {
   });
 
 });
-/*Enviar para todos*/
+/*Send to all*/
 Jogadores.broadcast = function broadcast(data) {
   wss.clients.forEach(function each(client) {
     if (client.readyState === WebSocket.OPEN) {
@@ -92,7 +92,7 @@ Jogadores.broadcast = function broadcast(data) {
     }
   });
 };
-/*Enviar pra todos menos para remetente*/
+/*this function Send to all less sender*/
 Jogadores.broadcastEveryoneElse =   function broadcastEveryoneElse(data,J){
 	wss.clients.forEach(function each(client) {
 	  if (client !== J && client.readyState === WebSocket.OPEN) {
@@ -105,7 +105,7 @@ server.listen(8080, function listening() {
   console.log('Listening on %d', server.address().port);
 });
 
-/*Sortear numeros*/
+/*To draw number*/
 setInterval(function(){
 	let newNum;
 	do{
@@ -118,13 +118,14 @@ setInterval(function(){
 	
 },5000);
 
-/*Enviar informaçoes estatisticas*/
+
 setInterval(function(){
+	/*This function send statistic information */
 	Jogadores.broadcast(`I-${Jogadores.length},${Jogadores.Pganhadores()}`);
 },1000);
 
 
-/*Calcular ganhadores Possiveis**/
+/*This function calculates the possibles winners**/
 Jogadores.Pganhadores =function (){
 	let ganhadores=0;
 	Jogadores.forEach(function(J) {
