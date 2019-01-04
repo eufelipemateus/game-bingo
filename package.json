@@ -5,18 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node server.js"
-	
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/felipefm32/Bingo.git"
   },
-	"dependencies": {
-		"express": "~4.14.1",
-		"express-session": "~1.15.1",
-		"ws":"3.0.0"
-	},
+  "dependencies": {
+    "express": "~4.14.1",
+    "express-session": "~1.15.1",
+    "ws": "3.0.0"
+  },
   "keywords": [
     "Bingo",
     "Multiplayer",

@@ -353,15 +353,15 @@ function initAll() {
 		var data = event.data.split("-");
 
 		switch(data[0]){
-			case "N" :
+			case "N" : //Numero Sorteado
 				SortearNumero(data[1]);	
 			break;
-			case "I" :
+			case "I" : //Informações
 				var info = data[1].split(",");
 				document.querySelector("#jogadores").innerHTML = info[0];
 				document.querySelector("#pGanhadores").innerHTML = info[1];
 			break;
-			case "NG" : 
+			case "NG" : //Novo Jogo
 				newCard();
 				
 				var numeros = "";
@@ -381,11 +381,11 @@ function initAll() {
 				document.querySelector("#box #WG").style.display='none';
 				document.querySelector("#box").style.display='none';
 			break;
-			case "YL" :		
+			case "YL" :	// Você perdeu!
 				document.querySelector("#box #YL").style.display='block';
 				document.querySelector("#box").style.display='block';
 			break;
-			case "YW" :		
+			case "YW" : // Você Ganhou!
 				document.querySelector("#box #YW").style.display='block';
 				document.querySelector("#box").style.display='block';
 			break;

@@ -19,6 +19,9 @@ let Sorteado = Array(121);
 let cardNums = 24;
 
 
+const IntervaloSorteio = 5000; //Intervalo do Sorteio dos Numeros
+
+
 wss.on('connection', function connection(ws, req) {
   const location = url.parse(req.url, true);
 
@@ -28,22 +31,22 @@ wss.on('connection', function connection(ws, req) {
 	  
 	  switch(data[0]){
 	
-		case "NC" :
+		case "NC" : //Nova cartela
 			ws.card = Array();
 			ws.cardSelected = Array()
 			 Jogadores.push(ws);
 			 ws.send("NG");
 			 
 		break;
-		case "C" :
+		case "C" : //Numeros da Cartela
 			ws.card = data[1].split(",");			
 		break
-		case "S" :
+		case "S" : 
 			ws.card.contains(data[1],function(){
 				ws.cardSelected.push(data[1]);
 			});
 		break;
-		case "B":
+		case "B": //Butão de Bingo
 			if(ws.cardSelected.length>=cardNums){
 				let NumerosChekededs=0;
 				Sorteado.forEach(function(N,index) {
@@ -55,14 +58,14 @@ wss.on('connection', function connection(ws, req) {
 							}else{
 								/*User lost*/
 								ws.send("YL-YL");
-								//console.log("Trapaça Numero não sorteado");
+								//console.log("Trapaça! Numero não sorteado");
 							}
 						});
 						console.log("NuChe:"+NumerosChekededs);
 					}else{
 						/*User lost*/
 						ws.send("YL-YL");
-						//console.log("Trapaça Numero não sorteado");
+						//console.log("Trapaça! Numero não sorteado");
 					}
 				});
 				if(NumerosChekededs>=cardNums){ 
@@ -101,9 +104,7 @@ Jogadores.broadcastEveryoneElse =   function broadcastEveryoneElse(data,J){
 	});
 };
 
-server.listen(8080, function listening() {
-  console.log('Listening on %d', server.address().port);
-});
+
 
 /*To draw number*/
 setInterval(function(){
@@ -116,7 +117,7 @@ setInterval(function(){
 	
 	Jogadores.broadcast(`N-${newNum}`);
 	
-},5000);
+},IntervaloSorteio);
 
 
 setInterval(function(){
@@ -157,3 +158,7 @@ Array.prototype.contains = function(k, callback) {
         return process.nextTick(check.bind(null, i+1));
     }(0));
 }
+
+server.listen(8080, function listening() {
+  console.log('Listening on %d', server.address().port);
+});
