@@ -1,6 +1,6 @@
 # NodeBingo
 
-NodeBingo é jogo multiplayer no qual vence quem tive mais números sorteados.
+NodeBingo é jogo multiplayer no qual vence quem tiver todos os numeros sorteados primeiro.
 
 [![Screenshot](https://felipefm32.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")](https://felipefm32.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")
 
@@ -12,7 +12,14 @@ Para instalar digite o codigo abaixo
 npm i node-bingo-game
 ```
 
-## Executando
+## Compiling
+
+```
+npm compile
+```
+
+
+## Running
 
 ```
 npm start

@@ -150,6 +150,10 @@ table {
 				<td align="right">Possiveis Ganhadores:</td>
 				<td align="center" id="pGanhadores"  title="Jogadores que matematicamente já ganharam.">Carregando...</td>
 			</tr>
+			<tr>
+				<td align="right">Qtd. N. Sorteados:</td>
+				<td align="center" id="numeros_sorteados"  title="Quantidade de numeros sorteados.">Carregando...</td>
+			</tr>
 		</table>
 	</div>	
 	<div id="buttons">
@@ -255,6 +259,12 @@ function GirarRoleta(){
 	},TimeInterval)
 }
 
+function PutDrawInRoll(numbers){
+	for(var i=0 ; i<numbers.length; i++){
+		document.querySelector('div[data-value="'+numbers[i]+'"]').classList.add("sorteado");	
+	}
+}
+
 function StopRoleta(){
 clearInterval(IntervalBPoints);
 }
@@ -308,7 +318,7 @@ function initAudio(){
 	document.body.appendChild(Audio);
 }
 function playSorteado(){
-	Audio.src = "./audio/win.mp3";
+	Audio.src = "./audio/click.mp3";
 	Audio.play();
 }
 
@@ -316,7 +326,6 @@ function playSorteado(){
 <script>
 /*** Iniciar Sistema  ***/
 function initAll() {	 
- if (document.getElementById) {
 
 
 	socket.on('connect', () => {
@@ -357,16 +366,21 @@ function initAll() {
 	socket.on('INFO', function (msg) {
 		document.querySelector("#jogadores").innerHTML = msg.gamers;
 		document.querySelector("#pGanhadores").innerHTML = msg.win_possible;
+		document.querySelector("#numeros_sorteados").innerHTML = msg.draw_numbers_counts;
+    });
+	
+	socket.on('NUMBERS DRAW', function (msg) {
+		NumerosSorteados = msg;
+		setTimeout(function(){ 
+			PutDrawInRoll(msg);
+		},100);//bug browser 
     });	
 	
 	socket.on('disconnect', () => {
 		StopRoleta();
 		console.log("Foi Fechado!! ");
 	});
-	
-  }else{
-    alert("Your browser does not support this script.");
-  }
+
 }
 </script>
 <script>

@@ -1,7 +1,7 @@
 import app from "./app";
 import { Server } from 'http';
 
-let port = process.env.PORT || app.PORT;
+const port = process.env.PORT || app.PORT;
 
 app.debug = true;
 app.server.listen(port, function () {

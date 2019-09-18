@@ -36,7 +36,9 @@ class App {
 
             socket.on('NEW CONNECTION', function (msg) {
 				
-				socket.emit("NEW NUMBER POINTS",bingo.Numbers)
+				socket.emit("NEW NUMBER POINTS",bingo.Numbers);
+				socket.emit('NUMBERS DRAW',bingo.Sorteados);
+
 
 				let card = bingo.NewCard();
 				socket.card = card ;
@@ -44,6 +46,8 @@ class App {
 
 				socket.emit("NEW CARD",card)
 				bingo.Gamers.push(socket);
+		
+
             });
 			
 			socket.on('select number', function (msg) {
@@ -89,7 +93,6 @@ class App {
 					socket.emit('YOU LOST');
 				}
             });
-			
 
             socket.on('disconnect', () => {
 				bingo.Gamers.splice(bingo.Gamers.indexOf(socket), 1);
@@ -100,19 +103,24 @@ class App {
 	private runtime(){
 		
 		setInterval(function(io){
-			let newNum;
+			let newNumber;
 			do{
-				newNum = Math.floor(Math.random() * bingo.Numbers );
-			}while(bingo.Sorteados[newNum]);
-	
-			bingo.Sorteados[newNum] = 1;
-			io.emit('DRAW NUMBER',newNum);	
+				newNumber = bingo.GetNewNum() + 1
+			}while(bingo.Sorteados.indexOf(newNumber)!==-1 );
+			
+			
+			bingo.Sorteados.push(newNumber);
+			io.emit('DRAW NUMBER',newNumber);	
 		},bingo.IntervaloSorteio,this.io);
 
 
 		setInterval(function(io){
 			
-			io.emit('INFO',{"gamers":bingo.Gamers.length,"win_possible":bingo.PossibleGamersWinners()});
+			io.emit('INFO',{
+				"gamers":bingo.Gamers.length,
+				"win_possible":bingo.PossibleGamersWinners(),
+				"draw_numbers_counts":bingo.Sorteados.length
+			});
 		},1000,this.io);
 	}
 }

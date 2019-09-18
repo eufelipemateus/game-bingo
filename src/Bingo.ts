@@ -2,12 +2,15 @@
 class Bingo {
 	public Gamers = Array();
 	public Numbers = 75;
-	public Sorteados = Array();
+	public Sorteados;
 	public CardNums = 24;
 	public IntervaloSorteio = 5000;
 	
 	
-	constructor() {}
+	constructor() {
+		
+		this.Sorteados = new Array();
+	}
 	
 	public NewCard() {		
 		let usedNumbers=Array();
@@ -21,7 +24,7 @@ class Bingo {
 		return usedNumbers.sort(function(a,b){ return a - b });
 	}
 
-	private GetNewNum() {
+	public GetNewNum() {
 		return Math.floor(Math.random() * this.Numbers );
 	}
 	
