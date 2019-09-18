@@ -14,12 +14,13 @@ const wss = new WebSocket.Server({ server });
 
 
 let Jogadores = Array();
-let Numeros = 120;
-let Sorteado = Array(121);
-let cardNums = 24;
+let Numeros = 60;
+let Sorteado = Array(61);
+let cardNums = 15;
 
 
 const IntervaloSorteio = 5000; //Intervalo do Sorteio dos Numeros
+const PortaServidor = 8080; //Porta TCP do Servidor
 
 
 wss.on('connection', function connection(ws, req) {
@@ -159,6 +160,6 @@ Array.prototype.contains = function(k, callback) {
     }(0));
 }
 
-server.listen(8080, function listening() {
+server.listen(PortaServidor, function listening() {
   console.log('Listening on %d', server.address().port);
 });

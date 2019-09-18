@@ -1,20 +1,26 @@
 {
   "name": "node-bingo-game",
-  "version": "1.0.0",
+  "version": "2.0.0-dev",
   "description": "Jogo de Bingo Multiplayer Online",
-  "main": "server.js",
+  "main": "build/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "compile": "tsc -w",
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/felipefm32/Bingo.git"
   },
   "dependencies": {
-    "express": "~4.14.1",
+    "@types/socket.io": "^2.1.2",
+    "express": "^4.16.4",
     "express-session": "~1.15.1",
-    "ws": "3.0.0"
+    "socket.io": "^2.2.0",
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "copyfiles": "^2.1.1",
+    "typescript": "^3.1.6"
   },
   "keywords": [
     "Bingo",

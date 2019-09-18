@@ -240,7 +240,6 @@ function InitRoleta(){
 function GirarRoleta(){
 	IntervalBPoints = setInterval(function(){
 		
-		
 		document.querySelector('div[data-value="'+IntervalValue+'"]').classList.remove("apontado");
 		
 		IntervalValue++;
@@ -282,7 +281,6 @@ function newCard(card) {//precisa melhorarar pentende de atualização futura!
 			}
 		}
    	}
-	
 }
 
 function selectSquare(event){
@@ -315,9 +313,7 @@ function playSorteado(){
 </script>
 <script>
 /*** Iniciar Sistema  ***/
-function initAll() {	 
- if (document.getElementById) {
-
+function initAll() {
 
 	socket.on('connect', () => {
 		socket.emit('NEW CONNECTION');
@@ -363,10 +359,6 @@ function initAll() {
 		StopRoleta();
 		console.log("Foi Fechado!! ");
 	});
-	
-  }else{
-    alert("Your browser does not support this script.");
-  }
 }
 </script>
 <script>

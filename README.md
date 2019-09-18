@@ -4,16 +4,10 @@ NodeBingo é jogo multiplayer no qual vence quem tive mais números sorteados.
 
 ## Installing
 
-Para instalar  copia o prejeto para o seu pc
+Para instalar digite o codigo abaixo
 
 ```
-git clone https://github.com/felipefm32/NodeBingo.git
-```
-
-Depois instale as dependencias do projeto usando o comando npm
-
-```
-npm install
+npm i node-bingo-game
 ```
 
 ## Executando
