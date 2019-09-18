@@ -1,6 +1,6 @@
 {
   "name": "node-bingo-game",
-  "version": "2.0.0-dev",
+  "version": "2.0.1-dev",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "build/server.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@types/socket.io": "^2.1.2",
     "express": "^4.16.4",
     "express-session": "~1.15.1",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",

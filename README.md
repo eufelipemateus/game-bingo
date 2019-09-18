@@ -2,6 +2,8 @@
 
 NodeBingo é jogo multiplayer no qual vence quem tive mais números sorteados.
 
+[![Screenshot](https://felipefm32.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")](https://felipefm32.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")
+
 ## Installing
 
 Para instalar digite o codigo abaixo
