@@ -2,7 +2,7 @@
 class Bingo {
 	public Gamers = Array();
 	public Numbers = 75;
-	public Sorteados = Array(61);
+	public Sorteados = Array();
 	public CardNums = 24;
 	public IntervaloSorteio = 5000;
 	
@@ -25,7 +25,7 @@ class Bingo {
 		return Math.floor(Math.random() * this.Numbers );
 	}
 	
-	public PossibleGamersWinners(){
+	public PossibleGamersWinners(){//Not working
 		let winners=0;
 		
 		this.Gamers.forEach((J)=> {
