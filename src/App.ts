@@ -7,7 +7,7 @@ class App {
     public app: express.Application;
     public server: Server;
     private io: SocketIO.Server;
-    public PORT: number = 8100;
+    public PORT: number = 8080;
 	public debug:boolean=false;
 	
 
@@ -21,7 +21,6 @@ class App {
     routes() {
         this.app = express();
         this.app.use(express.static('public'));
-
     }
 
     private sockets(): void {
@@ -32,13 +31,12 @@ class App {
     private listen(): void {
 
         this.io.on('connection', (socket: any) => {
-            if(this.debug)console.info('a user connected');
+            if(this.debug)console.info('A user connected!');
 
             socket.on('NEW CONNECTION', function (msg) {
 				
 				socket.emit("NEW NUMBER POINTS",bingo.Numbers);
 				socket.emit('NUMBERS DRAW',bingo.Sorteados);
-
 
 				let card = bingo.NewCard();
 				socket.card = card ;
@@ -62,24 +60,17 @@ class App {
 				
 				if(socket.selectedCards.length>=bingo.CardNums){
 					let NumerosChekededs=0;
-					this.bingo.Sorteados.forEach(function(N,index) {
+					this.bingo.Sorteados.forEach(function(N) {
 			
-						if(N){
-							socket.selectedCards.forEach(function(n){
-								if(n==index){
-									NumerosChekededs++;
-								}else{
-									/*User lost*/
-									socket.emit('YOU LOST')
-									if(this.debug)console.info("Trapaça! Numero não sorteado");
-								}
-							});
-							console.log("NuChe:"+NumerosChekededs);
-						}else{
-							/*User lost*/
-							socket.emit('YOU LOST')
-							if(this.debug)console.info("Trapaça! Numero não sorteado!");
-						}
+						socket.selectedCards.forEach(function(n){
+							if(n==N && (socket.card.indexOf(n)>-1)){
+								NumerosChekededs++;
+							}else{
+								/*User lost*/
+								socket.emit('YOU LOST')
+								if(this.debug)console.info("Trapaça! Numero não sorteado");
+							}
+						});						
 					});
 					if(NumerosChekededs>=this.bingo.CardNums){ 
 						//*User win Game*/
@@ -96,7 +87,7 @@ class App {
 
             socket.on('disconnect', () => {
 				bingo.Gamers.splice(bingo.Gamers.indexOf(socket), 1);
-                if(this.debug)console.info('user disconnected');
+                if(this.debug)console.info('User disconnected!');
             });
         });
     }
@@ -107,10 +98,9 @@ class App {
 			do{
 				newNumber = bingo.GetNewNum() + 1
 			}while(bingo.Sorteados.indexOf(newNumber)!==-1 );
-			
-			
 			bingo.Sorteados.push(newNumber);
 			io.emit('DRAW NUMBER',newNumber);	
+			
 		},bingo.IntervaloSorteio,this.io);
 
 
@@ -121,9 +111,8 @@ class App {
 				"win_possible":bingo.PossibleGamersWinners(),
 				"draw_numbers_counts":bingo.Sorteados.length
 			});
-		},1000,this.io);
+		},2000,this.io);
 	}
 }
-
 
 export default new App();

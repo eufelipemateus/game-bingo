@@ -27,7 +27,7 @@ npm start
 
 ### How game works
 
-The server draws in a certain time several numbers of a range each user can dial the numbers as the server races, the user is only declared vencendos if they complete with all the numbers drawn if the user presses the bingo button in a different declared situation loser.
+The server draws in a certain time several numbers of a range each user can dial the numbers as the server races, the user is only declared winner if they complete with all the numbers drawn if the user presses the bingo button in a different declared situation loser.
 
 
 ### Diagram

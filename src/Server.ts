@@ -3,7 +3,8 @@ import { Server } from 'http';
 
 const port = process.env.PORT || app.PORT;
 
-app.debug = true;
+app.debug = false; 
+
 app.server.listen(port, function () {
-    console.log(`Server running in + ${port}`);
+    console.info(`Server running in  ${port}...`);
 });

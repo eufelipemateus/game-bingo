@@ -1,46 +1,41 @@
 
 class Bingo {
 	public Gamers = Array();
-	public Numbers = 75;
-	public Sorteados;
+	public Numbers = 90;
+	public Sorteados= Array();
 	public CardNums = 24;
 	public IntervaloSorteio = 5000;
 	
-	
-	constructor() {
-		
-		this.Sorteados = new Array();
-	}
+	constructor() {}
 	
 	public NewCard() {		
-		let usedNumbers=Array();
+		let useds=Array();
 		for(var i=0 ; i<this.CardNums; i++){
 			let newNumber;
 			do{
 				newNumber =  this.GetNewNum() + 1;
-			}while(usedNumbers.indexOf(newNumber)!==-1 ) ;
-			usedNumbers.push(newNumber);
+			}while(useds.indexOf(newNumber)!==-1 ) ;
+			useds.push(newNumber);
 		}
-		return usedNumbers.sort(function(a,b){ return a - b });
+		return useds.sort(function(a,b){ return a - b });
 	}
 
 	public GetNewNum() {
 		return Math.floor(Math.random() * this.Numbers );
 	}
 	
-	public PossibleGamersWinners(){//Not working
+	public PossibleGamersWinners(){
 		let winners=0;
-		
 		this.Gamers.forEach((J)=> {
 			let  acertos = 0;
-			this.Sorteados.forEach(function(Boolean,index) {
-				J.card.forEach(function(n) {
-					if(index==n){
-						acertos++;					
+			for(let a=0 ; a<this.Sorteados.length; a++){
+				for(let b=0 ; b<J.card.length; b++){
+					if(this.Sorteados[a]==J.card[b]){
+						acertos++;			
 					}
-				});
-			});
-			if(acertos>=this.CardNums) winners;
+				}
+			}
+			if(acertos>=this.CardNums) winners++;
 		});
 		return winners;
 	}

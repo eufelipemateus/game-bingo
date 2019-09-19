@@ -221,7 +221,7 @@ var ValueSorteado = 0;
 
 var IntervalValue = 1;
 var IntervalBPoints;
-var TimeInterval = 80;
+var TimeInterval = 100;
 var NumerosSorteados = [];
 
 
@@ -243,8 +243,7 @@ function InitRoleta(){
 
 function GirarRoleta(){
 	IntervalBPoints = setInterval(function(){
-		
-		
+	
 		document.querySelector('div[data-value="'+IntervalValue+'"]').classList.remove("apontado");
 		
 		IntervalValue++;
@@ -266,7 +265,7 @@ function PutDrawInRoll(numbers){
 }
 
 function StopRoleta(){
-clearInterval(IntervalBPoints);
+	clearInterval(IntervalBPoints);
 }
 
 function SortearNumero(num){
@@ -279,9 +278,7 @@ function SortearNumero(num){
 var selectedSquares  = new Array();
 
 function newCard(card) {//precisa melhorarar pentende de atualização futura!
-	
-	let colPlace = new Array(1,2,3,4,5);
-	
+	let colPlace = new Array(1,2,3,4,5);	
 	for(var p=0 ; p<colPlace.length; p++){
 		for(var i=0 ; i<card.length; i++){
 			if(card[i]<=(colPlace[p]*(MaxPoints/5))){
@@ -292,7 +289,6 @@ function newCard(card) {//precisa melhorarar pentende de atualização futura!
 			}
 		}
    	}
-	
 }
 
 function selectSquare(event){
@@ -313,7 +309,7 @@ function sendBingo(){
 /**** Audio ****/
 var Audio;
 
-function initAudio(){
+function InitAudio(){
 	Audio = document.createElement("audio");
 	document.body.appendChild(Audio);
 }
@@ -324,10 +320,8 @@ function playSorteado(){
 
 </script>
 <script>
-/*** Iniciar Sistema  ***/
-function initAll() {	 
-
-
+/*** Listen connections  ***/
+function listen() {	 
 	socket.on('connect', () => {
 		socket.emit('NEW CONNECTION');
 	});
@@ -341,7 +335,6 @@ function initAll() {
     });
 	
 	socket.on('NEW CARD', function (msg) {
-		initAudio();
 		InitRoleta();
 		newCard(msg);
 	   
@@ -378,13 +371,13 @@ function initAll() {
 	
 	socket.on('disconnect', () => {
 		StopRoleta();
-		console.log("Foi Fechado!! ");
+		console.log("Conexao Fechada!! ");
 	});
-
 }
 </script>
 <script>
-initAll();
+listen();
+InitAudio();
 </script>
 
 </html>
