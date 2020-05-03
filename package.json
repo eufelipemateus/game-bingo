@@ -1,24 +1,33 @@
 {
   "name": "node-bingo-game",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Jogo de Bingo Multiplayer Online",
-  "main": "build/server.js",
+  "main": "._build/server.js",
   "scripts": {
-    "compile": "tsc",
-    "start": "node dist/server.js"
+    "build": "tslint --project . && tsc",
+    "serve": "nodemon --watch \"src/**/*\" -e ts --exec \"ts-node -r tsconfig-paths/register\" ./src/Server.ts",
+    "start": "node ./._build/Server.js",
+    "lint:ts:base": "tslint --project tsconfig.json --config tslint.json",
+    "lint:ts": "npm run lint:ts:base \"src/**/*.ts\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/felipefm32/Bingo.git"
   },
   "dependencies": {
-    "@types/socket.io": "^2.1.2",
     "express": "^4.16.4",
     "express-session": "~1.15.1",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
+    "@types/socket.io": "^2.1.2",
+    "dotenv": "^8.2.0",
+    "lint-staged": "9.5.0",
+    "nodemon": "^1.11.0",
+    "ts-node": "3.3.0",
+    "tsconfig-paths": "3.9.0",
+    "tslint": "5.7.0",
     "typescript": "^3.1.6"
   },
   "keywords": [

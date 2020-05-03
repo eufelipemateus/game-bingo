@@ -1,10 +1,9 @@
-import app from "./app";
-import { Server } from 'http';
+import app from './App';
 
 const port = process.env.PORT || app.PORT;
 
-app.debug = false; 
+app.debug = !!+process.env.DEBUG; // Debug
 
-app.server.listen(port, function () {
+app.server.listen(port, () => {
     console.info(`Server running in  ${port}...`);
 });

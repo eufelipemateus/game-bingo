@@ -7,6 +7,6 @@ node_modules/
 .npm
 
 # build files
-build/
+._build/
 package-lock.json
 
