@@ -12,10 +12,10 @@ Para instalar digite o codigo abaixo
 npm i node-bingo-game
 ```
 
-## Compiling
+## Building
 
-```
-npm compile
+```bash
+npm run build 
 ```
 
 
