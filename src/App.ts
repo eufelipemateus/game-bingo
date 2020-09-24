@@ -63,10 +63,10 @@ class App {
                     let NumerosChekededs = 0;
                     bingo.Sorteados.forEach((N) => {
 
-                        socket.selectedCards.forEach(function(n){
+                        socket.selectedCards.forEach(function(n) {
                             if (n == N && (socket.card.indexOf(n) > -1)) {
                                 NumerosChekededs++;
-                            }else {
+                            } else {
                                 /*User lost*/
                                 socket.emit('YOU LOST');
                                 if (this.debug) {
@@ -83,7 +83,7 @@ class App {
                             console.info('Alguém ganhou!');
                         }
                     }
-                }else {
+                } else {
                     /*User lost*/
                     if (this.debug) {
                         console.info('Alguém Perdeu! A Cartela não foi toda preenchida!');
