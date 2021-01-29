@@ -1,5 +1,5 @@
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Bingo</title>
 <style>
 body{
@@ -23,23 +23,21 @@ table {
 	border-collapse: collapse;
 }
 
-
 #roleta{
 	height:176px;
 	position:relative;
 	margin-bottom:1%;
 	margin:0;
 	padding:0;
-	
 }
 #roleta div{
 	height:40px;
 	font-size:20px;
-	display:inline-block;
 	width:40px;
 	border:2px solid #000;
 	text-align:center;
 	padding:0;
+    display: inline-block;
 }
 #roleta div.apontado{
 	border:2px solid #BF0;
@@ -143,16 +141,16 @@ table {
 		<table>
 			<tr>
 				<td align="right" width="50%">Jogadores:</td>
-				<td align="center" width="50%"  id="jogadores" title="Quantidades de jogadores Online.">Carregando...</td>
+				<td align="left" width="50%"  id="jogadores" title="Quantidades de jogadores Online.">Carregando...</td>
 			</tr>
 			
 			<tr>
 				<td align="right">Possiveis Ganhadores:</td>
-				<td align="center" id="pGanhadores"  title="Jogadores que matematicamente já ganharam.">Carregando...</td>
+				<td align="left" id="pGanhadores"  title="Jogadores que matematicamente jï¿½ ganharam.">Carregando...</td>
 			</tr>
 			<tr>
 				<td align="right">Qtd. N. Sorteados:</td>
-				<td align="center" id="numeros_sorteados"  title="Quantidade de numeros sorteados.">Carregando...</td>
+				<td align="left" id="numeros_sorteados"  title="Quantidade de numeros sorteados.">Carregando...</td>
 			</tr>
 		</table>
 	</div>	
@@ -218,12 +216,10 @@ table {
 var MaxPoints;
 var ValueSorteado = 0;
 
-
 var IntervalValue = 1;
 var IntervalBPoints;
 var TimeInterval = 100;
 var NumerosSorteados = [];
-
 
 
 function createPoint(value){
@@ -232,7 +228,6 @@ function createPoint(value){
 	elemento.innerHTML = value;
 	document.getElementById("roleta").appendChild(elemento);
 }	
-
 
 function InitRoleta(){
 	document.getElementById("roleta").innerHTML = "";
@@ -261,7 +256,7 @@ function GirarRoleta(){
 function PutDrawInRoll(numbers){
 	for(var i=0 ; i<numbers.length; i++){
 		document.querySelector('div[data-value="'+numbers[i]+'"]').classList.add("sorteado");	
-	}
+    }
 }
 
 function StopRoleta(){
@@ -277,7 +272,7 @@ function SortearNumero(num){
 /*** Card     ***/
 var selectedSquares  = new Array();
 
-function newCard(card) {//precisa melhorarar pentende de atualização futura!
+function newCard(card) {//precisa melhorarar pentende de atualizacao futura!
 	let colPlace = new Array(1,2,3,4,5);	
 	for(var p=0 ; p<colPlace.length; p++){
 		for(var i=0 ; i<card.length; i++){
@@ -337,7 +332,6 @@ function listen() {
 	socket.on('NEW CARD', function (msg) {
 		InitRoleta();
 		newCard(msg);
-	   
 			
 		GirarRoleta();
 		document.querySelector("#box #WG").style.display='none';
@@ -362,11 +356,11 @@ function listen() {
 		document.querySelector("#numeros_sorteados").innerHTML = msg.draw_numbers_counts;
     });
 	
-	socket.on('NUMBERS DRAW', function (msg) {
+	socket.on('NUMBERS DRAW', function (msg) {    
 		NumerosSorteados = msg;
 		setTimeout(function(){ 
-			PutDrawInRoll(msg);
-		},100);//bug browser 
+            PutDrawInRoll(msg);
+		},100);
     });	
 	
 	socket.on('disconnect', () => {

@@ -33,7 +33,7 @@ class App {
             if ( this.debug ) {
                 console.info('A user connected!');
             }
-
+            
             socket.on('NEW CONNECTION', (msg) => {
 
                 socket.emit('NEW NUMBER POINTS', bingo.Numbers);
@@ -112,7 +112,6 @@ class App {
         }, bingo.IntervaloSorteio, this.io);
 
         setInterval((io) => {
-
             io.emit('INFO', {
                 gamers: bingo.Gamers.length,
                 win_possible: bingo.PossibleGamersWinners(),

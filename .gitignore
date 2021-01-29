@@ -1,5 +1,4 @@
 
-
 # Dependency directories
 node_modules/
 
@@ -8,5 +7,4 @@ node_modules/
 
 # build files
 ._build/
-package-lock.json
 

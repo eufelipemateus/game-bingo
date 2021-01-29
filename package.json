@@ -1,6 +1,6 @@
 {
   "name": "node-bingo-game",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felipefm32/Bingo.git"
+    "url": "git+https://github.com/eufelipemateus/NodeBingo.git"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -35,12 +35,18 @@
     "Multiplayer",
     "Jogo",
     "Game",
+    "Online",
+    "Cassino",
     "Online"
   ],
-  "author": "Felipe Mateus",
-  "license": "CC",
+  "author": {
+		"name": "Felipe Mateus",
+		"email": "eu@felipemateus.com",
+		"url": "https://eufelipemateus.com/"
+	},
+  "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/felipefm32/Bingo/issues"
+    "url": "https://github.com/eufelipemateus/NodeBingo/issues"
   },
-  "homepage": "https://github.com/felipefm32/Bingo#readme"
+  "homepage": "https://github.com/eufelipemateus/NodeBingo#readme"
 }
