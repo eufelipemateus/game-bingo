@@ -1,14 +1,18 @@
 {
   "name": "node-bingo-game",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
+  "engines": {
+		"node": "10.24.0"
+	},
   "scripts": {
-    "build": "tslint --project . && tsc",
+    "build": "tsc -p tsconfig.json",
     "serve": "nodemon --watch \"src/**/*\" -e ts --exec \"ts-node -r tsconfig-paths/register\" ./src/Server.ts",
     "start": "node ./._build/Server.js",
     "lint:ts:base": "tslint --project tsconfig.json --config tslint.json",
-    "lint:ts": "npm run lint:ts:base \"src/**/*.ts\""
+    "lint:ts": "npm run lint:ts:base \"src/**/*.ts\"",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,8 +24,8 @@
     "socket.io": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^7.0.5",
-    "@types/socket.io": "^2.1.2",
+    "@types/node": "^14.14.35",
+    "@types/socket.io": "^2.1.12",
     "dotenv": "^8.2.0",
     "lint-staged": "9.5.0",
     "nodemon": "^1.11.0",
@@ -40,10 +44,10 @@
     "Online"
   ],
   "author": {
-		"name": "Felipe Mateus",
-		"email": "eu@felipemateus.com",
-		"url": "https://eufelipemateus.com/"
-	},
+    "name": "Felipe Mateus",
+    "email": "eu@felipemateus.com",
+    "url": "https://eufelipemateus.com/"
+  },
   "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/eufelipemateus/NodeBingo/issues"

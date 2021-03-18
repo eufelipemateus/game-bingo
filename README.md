@@ -59,5 +59,5 @@ Server-->Client:Send  "YOU WIN"
 
 ## Author
 
-* **[Felipe Mateus](https://felipemateus.com)** - [eufelipemateus](https://github.com/eufelipemateus)
+* **[Felipe Mateus](https://eufelipemateus.com)** - [eufelipemateus](https://github.com/eufelipemateus)
 

@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { createServer, Server } from 'http';
-import * as socketIo from 'socket.io';
+import { Socket } from 'socket.io';
+import socketIo = require('socket.io');
 import bingo from './Bingo';
 
 class App {
@@ -8,7 +9,7 @@ class App {
     public server: Server;
     public PORT: number = 8080;
     public debug: boolean= false;
-    private io: SocketIO.Server;
+    private io: socketIo.Server;
 
     constructor() {
         this.routes();
@@ -24,7 +25,7 @@ class App {
 
     private sockets(): void {
         this.server = createServer(this.app);
-        this.io = socketIo(this.server);
+        this.io = new socketIo.Server(this.server);
     }
 
     private listen(): void {
@@ -33,7 +34,7 @@ class App {
             if ( this.debug ) {
                 console.info('A user connected!');
             }
-            
+
             socket.on('NEW CONNECTION', (msg) => {
 
                 socket.emit('NEW NUMBER POINTS', bingo.Numbers);
