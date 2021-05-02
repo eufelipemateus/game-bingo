@@ -1,6 +1,6 @@
-# NodeBingo
+# game-bingo
 
-[![domino-game](https://snyk.io/advisor/npm-package/bingo-game/badge.svg)](https://snyk.io/advisor/npm-package/bingo-game)  [![npm version](https://badge.fury.io/js/bingo-game.svg)](https://badge.fury.io/js/bingo-game)
+[![Known Vulnerabilities](https://snyk.io/test/npm/game-bingo/badge.svg)](https://snyk.io/test/npm/game-bingo) [![domino-game](https://snyk.io/advisor/npm-package/game-bingo/badge.svg)](https://snyk.io/advisor/npm-package/game-bingo)  [![npm version](https://badge.fury.io/js/game-bingo.svg)](https://badge.fury.io/js/game-bingo)
 
 NodeBingo é jogo multiplayer no qual vence quem tiver todos os numeros sorteados primeiro.
 

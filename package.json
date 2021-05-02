@@ -71,7 +71,11 @@
     "full-stack-developer",
     "Dom"
   ],
-  "author": "Felipe Mateus <eu@felipemateus.com> (https://eufelipemateus.com/)",
+  "author": {
+		"name": "Felipe Mateus",
+		"email": "eu@felipemateus.com",
+		"url": "https://eufelipemateus.com/"
+	},
   "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/eufelipemateus/game-bingo/issues"
