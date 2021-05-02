@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-	"outDir": "._build"
+	"outDir": "._build",
+    "baseUrl": "./src"
   },
   "include": [
     "src/**/*.ts"

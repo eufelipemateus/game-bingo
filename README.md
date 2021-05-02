@@ -1,8 +1,10 @@
 # NodeBingo
 
+[![domino-game](https://snyk.io/advisor/npm-package/bingo-game/badge.svg)](https://snyk.io/advisor/npm-package/bingo-game)  [![npm version](https://badge.fury.io/js/bingo-game.svg)](https://badge.fury.io/js/bingo-game)
+
 NodeBingo é jogo multiplayer no qual vence quem tiver todos os numeros sorteados primeiro.
 
-[![Screenshot](https://felipefm32.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")](https://felipefm32.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")
+[![Screenshot](https://felipemateus.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")](https://felipemateus.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")
 
 ## Installing
 

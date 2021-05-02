@@ -1,11 +1,11 @@
 {
-  "name": "node-bingo-game",
+  "name": "game-bingo",
   "version": "2.0.4",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
   "engines": {
-		"node": "10.24.0"
-	},
+    "node": "10.24.0"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "serve": "nodemon --watch \"src/**/*\" -e ts --exec \"ts-node -r tsconfig-paths/register\" ./src/Server.ts",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eufelipemateus/NodeBingo.git"
+    "url": "git+https://github.com/eufelipemateus/game-bingo.git"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -32,7 +32,7 @@
     "ts-node": "3.3.0",
     "tsconfig-paths": "3.9.0",
     "tslint": "5.7.0",
-    "typescript": "^3.1.6"
+    "typescript": "^4.2.4"
   },
   "keywords": [
     "Bingo",
@@ -41,16 +41,40 @@
     "Game",
     "Online",
     "Cassino",
-    "Online"
+    "Online",
+    "Game",
+    "multiplaer",
+    "Online",
+    "Express",
+    "HTML5",
+    "Typescript",
+    "Jogos-online",
+    "Learn",
+    "socket.io",
+    "realtime",
+    "developers",
+    "dev",
+    "realtime",
+    "Games",
+    "jogo",
+    "dev-pleno",
+    "jogos",
+    "geek",
+    "dom-html",
+    "dev-junior",
+    "runtime",
+    "DOM-Element",
+    "brazil",
+    "game",
+    "jogo-tabuleiro",
+    "fun",
+    "full-stack-developer",
+    "Dom"
   ],
-  "author": {
-    "name": "Felipe Mateus",
-    "email": "eu@felipemateus.com",
-    "url": "https://eufelipemateus.com/"
-  },
+  "author": "Felipe Mateus <eu@felipemateus.com> (https://eufelipemateus.com/)",
   "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/eufelipemateus/NodeBingo/issues"
+    "url": "https://github.com/eufelipemateus/game-bingo/issues"
   },
-  "homepage": "https://github.com/eufelipemateus/NodeBingo#readme"
+  "homepage": "http://domino.felipemateus.com/"
 }
