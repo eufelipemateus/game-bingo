@@ -58,6 +58,8 @@ Note right of Client: The server send "you lost" or "you win"
 Server-->Client:Send  "YOU WIN"
 ```
 
+[Veja mais sobre o Bingo](https://felipemateus.com/blog/2021/05/bingo).
+
 
 ## Author
 
