@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "express-session": "~1.17.1",
+    "express-session": "~1.17.2",
     "socket.io": "^3.0.0"
   },
   "devDependencies": {
