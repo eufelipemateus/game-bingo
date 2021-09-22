@@ -4,7 +4,7 @@
 
 NodeBingo é jogo multiplayer no qual vence quem tiver todos os numeros sorteados primeiro.
 
-[![Screenshot](https://felipemateus.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")](https://felipemateus.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")
+[![Screenshot Felipe Mateus Bingo Game](https://felipemateus.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")](https://felipemateus.com/wp-content/uploads/2019/09/2019-09-18.png "screenshot")
 
 ## Installing
 
