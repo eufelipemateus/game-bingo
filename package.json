@@ -4,7 +4,7 @@
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
   "engines": {
-    "node": "10.24.0"
+    "node": "14.17.6"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -19,7 +19,8 @@
     "url": "git+https://github.com/eufelipemateus/game-bingo.git"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "@types/express": "^4.17.13",
+    "express": "^4.17.1",
     "express-session": "~1.17.2",
     "socket.io": "^3.0.0"
   },
@@ -27,8 +28,8 @@
     "@types/node": "^14.17.5",
     "@types/socket.io": "^2.1.12",
     "dotenv": "^8.6.0",
-    "lint-staged": "9.5.0",
-    "nodemon": "^1.11.0",
+    "lint-staged": "^11.2.6",
+    "nodemon": "^2.0.15",
     "ts-node": "3.3.0",
     "tsconfig-paths": "3.9.0",
     "tslint": "5.7.0",
