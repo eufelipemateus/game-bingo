@@ -1,6 +1,6 @@
 {
   "name": "game-bingo",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
   "engines": {
