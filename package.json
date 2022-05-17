@@ -1,10 +1,10 @@
 {
   "name": "game-bingo",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
   "engines": {
-    "node": "14.17.6"
+    "node": ">=14.17.6"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
