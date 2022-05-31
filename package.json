@@ -1,6 +1,6 @@
 {
-  "name": "game-bingo",
-  "version": "2.0.6",
+  "name": "@eufelipemateus/game-bingo",
+  "version": "2.0.7",
   "description": "Jogo de Bingo Multiplayer Online",
   "main": "._build/server.js",
   "engines": {
@@ -81,5 +81,8 @@
   "bugs": {
     "url": "https://github.com/eufelipemateus/game-bingo/issues"
   },
-  "homepage": "http://domino.felipemateus.com/"
+  "homepage": "https://github.com/eufelipemateus/game-bingo",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  }
 }
