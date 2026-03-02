@@ -4,6 +4,7 @@
 [![domino-game](https://snyk.io/advisor/npm-package/game-bingo/badge.svg)](https://snyk.io/advisor/npm-package/game-bingo) 
 [![GitHub version](https://badge.fury.io/gh/eufelipemateus%2Fgame-bingo.svg)](https://badge.fury.io/gh/eufelipemateus%2Fgame-bingo) 
 [![Rate this package](https://badges.openbase.com/js/rating/game-bingo.svg?style=openbase&token=7VATsC/620YVh+T3aOOG0VBGX5N4vDTrMr/ks05vO4o=)](https://openbase.com/js/game-bingo?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![kandi X-Ray](https://kandi.openweaver.com/badges/xray.svg)](https://kandi.openweaver.com/html/eufelipemateus/game-bingo)
 
 NodeBingo é jogo multiplayer no qual vence quem tiver todos os numeros sorteados primeiro.
 
